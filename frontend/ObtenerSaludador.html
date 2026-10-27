@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ontener saludador</title>
+</head>
+<body>
+    <h1>Obtener saludador</h1>
+    <label for="">Usuario:</label>
+    <input type="text" id="usuario" disabled>
+    <button onclick="obtener()">obtener</button>
+    <script>
+        usuario = document.getElementById("usuario")
+        function obtener(){
+            url = "http://localhost:8081/obtenerSaludador"
+            fetch(url)
+            .then(respuesta =>{
+                return respuesta.json()
+            })
+            .then(datos =>{
+                usuario.value = datos.contenido
+                console.log(datos.contenido)
+            })
+            .catch(error=>{
+                console.log(error)
+            })
+        }
+    </script>
+</body>
+</html>

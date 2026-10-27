@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saludar</title>
+</head>
+
+<body>
+    <h1>Saludar</h1>
+    <button onclick="saludar()">Saludar</button>
+    <button onclick="saludar2()">Saludar 2</button>
+
+    <script>
+
+        function saludar() {
+            url = "http://localhost:8081/Saludos";
+            fetch(url)
+                .then(respuesta => {
+                    r=respuesta.text();
+                    console.log(r);
+                    return r;
+                })
+                .then(datos => {
+                    console.log(datos);
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }
+
+        function saludar2() {
+            url = "http://localhost:8081/Saludos";
+            var xhttp = new XMLHttpRequest();
+            xhttp.onload = () => {
+                console.log(xhttp.response);
+            };
+            xhttp.open("GET", url);
+            xhttp.send();
+        }
+    </script>
+</body>
+
+</html>
